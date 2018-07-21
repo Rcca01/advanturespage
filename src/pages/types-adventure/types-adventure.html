@@ -1,0 +1,62 @@
+<!--
+  Generated template for the TypesAdventurePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Adventures</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let adventure of adventures">
+
+    <ion-item>
+      <h2>{{adventure?.adventures | uppercase}}</h2>
+      <p>{{adventure?.destinyCity}}</p>
+      <p>{{adventure?.stateLongName}} - {{adventure?.destinyCountry}}</p>
+    </ion-item>
+      
+    <ion-card-content>
+      <p>{{adventure?.description}}</p>
+    </ion-card-content>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4 *ngFor="let img of adventure?.gallery">
+                <button [class.zoomed]="zoomedImage != null && img == zoomedImage" (click)="zoomImage(img)">
+                    <img src="{{img.image}}" zoom>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+  
+    <ion-card-content>
+      <h2>GEAR</h2>
+      <p>{{adventure?.gear}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <ion-item ion-item icon-start clear small>
+          <div>U$ {{adventure?.price}}</div>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item ion-item icon-start clear small>
+          <div>{{adventure?.difficulty}}</div>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item ion-item icon-start clear small>
+          <div>{{adventure?.duration}}h</div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
